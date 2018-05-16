@@ -1,0 +1,17 @@
+
+
+
+.crystals {
+      border:1px solid red
+      align-items: center;
+    }
+
+
+.crystal {
+      border:1px solid green
+      width: 200px;
+      height: 200px;
+    }
+
+
+ 
