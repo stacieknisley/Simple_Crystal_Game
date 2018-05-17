@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset- "UTF-8">
+  <title>simple crystal game</title>
+
+
+  <style>
+    .src {
+      https: //www.pinterest.com/pin/648799890037954883
+    }
+
+    .crystals {
+      display: flex;
+      justify-content: space-around;
+      /* border: 4px solid red; */
+      align-items: center
+    }
+
+
+    .crystal {
+      border: 6px solid purple;
+      padding: 10px;
+      width: 200px;
+      height: 200px
+    }
+  </style>
+</head>
+
+<body>
+
+  <h3>Simple Crystal Game</h3>
+  <h1> Number to Guess: </h1>
+
+  <p id="result"> </p>
+  <p id="win"></p>
+  <p id="lost"></p>
+
+  <div class="crystals"> </div>
+
+  <p> id="previous"</p>
+
+  <!-- buttons -->
+
+  <div id="button_blue">
+    <img id="blue" src="assets/images/blue.jpg" alt="blue crystal" />
+  </div>
+
+  <div id="button_green">
+    <img id="green" src="assets/images/green.jpg" alt="green crystal" />
+  </div>
+
+  <div id="button_red">
+    <img id="red" src="assets/images/red.jpg" alt="red crystal" />
+  </div>
+
+  <div id="button_yellow">
+    <img id="yellow" src="assets/images/yellow.jpg" alt="yellow crystal" />
+  </div>
+
+
+
+
+  <!-- JAVASCRIPT  -->
+  <!-- ========================================= -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      alert('Document Ready!');
+    });
+
+
+    var random_result;
+    var lost = 0;
+    var win = 0;
+    var previous = 0;
+
+    var resetAndstartGame = function () {
+      $(".crystals").empty();
+
+      var images = [
+
+        "assets/images/blue.jpg",
+
+        "assets/images/green.jpg",
+
+        "assets/images/red.jpg",
+
+        "assets/images/yellow.jpg",
+
+      ]
+
+
+      random_result = Math.floor(Math.random() * 69) + 30;
+
+      $("result").html("Random Result:  " + random_result);
+
+      for (var i = 0; i < 4; i++) {
+
+        var random = Math.floor(Math.random() * 11) * 1;
+        // console.log(random);
+
+        var crystal = $("<div>");
+        crystal.attr({
+          "class": 'crystal',
+          "data-random": random
+        });
+
+        crystal.html(random);
+
+        $(".crystals").append(crystal);
+
+      }
+      $("#previous").html("Total Score: " + previous);
+
+    }
+
+    resetAndstartGame();
+
+    $(document).on('click', ".crystal", function () {
+
+      var num = parseInt($(this).attr('data-random'));
+
+      previous += num;
+
+      $("#previious").html("Total Score:   " + previous);
+
+      console.log(previous);
+
+      if (previous > random_result) {
+        lost++;
+        $("lost").html("You Lost" + lost);
+        console.log("You Lost");
+        previous = 0;
+        resetAndStart();
+      }
+
+      else if (previous === random_result) {
+        win++;
+        $("win").html("You Win!" + win);
+        console.log("YOU WIN!");
+        previous = 0;
+        resetAndStart();
+      }
+
+
+      // console.log(previous);
+      // var result = num + 5;
+      // consol.log(num, ' + ', result);
+
+    });
+
+
+
+
+//     <!--Speudo code -->
+// <!--A game with 4 crystals and a Random Result -->
+// <!--Every crystal needs to have a random number between 1 and 12  -->
+// <!--A new random number should be generated every single time we win or lost -->
+// <!--to the 4 crystals -->
+// <!--When clicking any CRYSTAL, it should be add to the previous result -->
+// <!--Until it equals the Random Result -->
+// <!--If it is greater than the Random Result, we decrement a lost counter --> 
+// <!-- If it is equal, then we increment a win counter -->
+
+
+// <!-- Would like to eventually add a background image and 
+// 4 crystal images in the boxes to fade in and out when clicked -->
+
+// <!-- Can't get the counter to increase. -->
+
+
+
+  </script>
+</body>
+
+</html>
