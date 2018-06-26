@@ -3,16 +3,19 @@
 <head>
   <meta charset-"UTF-8">
   <title>simple crystal game</title>
-
-
-<style>
-
+  <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <!-- <script src="assets/javascript/game.js"></script>
+ -->
+  <style>
     body  {
-      background:rgb(49, 222, 245);
-      
-    /* background-image: url("assets/images/quartzcorchia2.jpg"); */
-  
-      
+      /* background:rgb(49, 222, 245); */
+      /* background: linear-gradient(red, yellow); */
+    background-image: url("./assets/images/quartzcorchia2.jpg");
+    /* background-repeat: no-repeat; */
+    color:white;
+
     }
 
     .crystals {
@@ -29,52 +32,97 @@
           width: 200px;
           height:200px
       }
-  
-    </style>
+
+      h1 {color: blue;
+          font-family:"Gill Sans"
+      }
+
+      h2 {color: blue;
+          font-family:"Gill Sans"
+      }
+      
+      #result {color:rgb(228, 11, 11);
+          font-family:"Gill Sans";
+          font-size: 30px
+      }
+      
+      #win {color:rgb(228, 11, 11);
+          font-family:"Gill Sans";
+          font-size: 30px
+      }
+
+      #lost {color:rgb(228, 11, 11);
+          font-family:"Gill Sans";
+          font-size: 30px
+      }
+
+      #previous {color:rgb(228, 11, 11);
+          font-family:"Gill Sans";
+          font-size: 30px
+      }
+   
+      
+
+  </style>
 </head>
- 
+
 <body>
 
-    <h3>Simple Crystal Game</h3>
+<div=container>
+    <h1> Simple CRYSTAL Game</h1>
+    <p> Rules of the Game: 
+    <p> At the start of the game you will be given a random number.
+        There are four crystals below each with a different hidden value.</p>
+    <p> Click on any crystal you choose and a specific amount of points will be added to your total score.</p>
+    <p> You win the game when your total score matches the random number.
+        You lose the game if your total score goes above the random number.</p>
+    <p> At the start of each game the value of each crystal changes.</p>
+
+    <h2> Select any crystal and Good Luck!</h2>
       <!-- <h1> Number to Guess: </h1> -->
 
       <p id="result">  </p>
       <p id="win"></p>
       <p id="lost"></p>
-      <p id="previous" ></p>
+      <p id="previous"></p>
       <div class="crystals">  </div>
 
 
  <!-- buttons -->
-
 <!-- <div id="button_blue">
       <img id="blue" src="assets/images/blue.jpg" alt="blue crystal"/>
  </div>
-
  <div id="button_green">
       <img id="green" src="assets/images/green.jpg" alt="green crystal"/> 
  </div>   
-
  <div id="button_red">  
       <img id="red"  src="assets/images/red.jpg" alt="red crystal"/>  
  </div> 
-
  <div id="button_yellow"> 
       <img id="yellow" src="assets/images/yellow.jpg" alt="yellow crystal"/>   
  </div> -->
 
-
-
-
           <!-- JAVASCRIPT  -->
  <!-- ========================================= -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    // $(document).ready(function()
+  
+     <!--Speudo code -->
+ <!--A game with 4 crystals and a Random Result -->
+<!--Every crystal needs to have a random number between 1 and 12  -->
+<!--A new random number should be generated every single time we win or lost -->
+<!--to the 4 crystals -->
+ <!--When clicking any CRYSTAL, it should be add to the previous result -->
+ <!--Until it equals the Random Result -->
+<!--If it is greater than the Random Result, we decrement a lost counter --> 
+<!-- If it is equal, then we increment a win counter -->
+
+
+<!-- Would like to eventually add a background image and 
+// 4 crystal images in the boxes to fade in and out when clicked -->
+
+
+<script type="text/javascript">
+$( document ).ready(function() {
       // alert('Document Ready!');
-
-    
-
 var random_result;
 var lost = 0 ;
 var win = 0 ;
@@ -83,11 +131,7 @@ var previous = 0;
 var resetAndstartGame = function ()  {
   $(".crystals").empty();
 
-
-
-$(   )
 var images = [
-
       "assets/images/blue.jpg", 
 
       "assets/images/green.jpg",
@@ -95,9 +139,7 @@ var images = [
       "assets/images/red.jpg",
 
       "assets/images/yellow.jpg",
-
 ]
-
 
 random_result = Math.floor(Math.random() * 120 )  + 9;
 
@@ -124,6 +166,7 @@ var crystal = $("<img>");
   $("#previous").html("Total Score: " + previous);
 
 }
+
 
 resetAndstartGame();
 
@@ -153,32 +196,14 @@ else if(previous === random_result){
     resetAndstartGame();
 }
 
-
    // console.log(previous);
    // var result = num + 5;
    // consol.log(num, ' + ', result);
 
 });
-
-
-
-
-//     <!--Speudo code -->
-// <!--A game with 4 crystals and a Random Result -->
-// <!--Every crystal needs to have a random number between 1 and 12  -->
-// <!--A new random number should be generated every single time we win or lost -->
-// <!--to the 4 crystals -->
-// <!--When clicking any CRYSTAL, it should be add to the previous result -->
-// <!--Until it equals the Random Result -->
-// <!--If it is greater than the Random Result, we decrement a lost counter --> 
-// <!-- If it is equal, then we increment a win counter -->
-
-
-// <!-- Would like to eventually add a background image and 
-// 4 crystal images in the boxes to fade in and out when clicked -->
-
-  
-
+});
 </script>
+</div>
+ 
 </body>
 </html>
